@@ -13,7 +13,7 @@ public class Main {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 int num = r.nextInt(50);
-                if (isPrime(num) && num > 25) {
+                if (isPrime(num) && num > 20) {
                     matrix[i][j] = 0;
                 } else {
                     matrix[i][j] = num;
