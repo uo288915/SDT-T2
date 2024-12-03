@@ -5,15 +5,15 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("This is a program that generates a random sorted matrix\n");
+        System.out.println("This is a program for the SDT subject\n");
 
-        int[][] matrix = new int[40][40];
+        int[][] matrix = new int[30][30];
         Random r = new Random();
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                int num = r.nextInt(100);
-                if (isPrime(num) && num > 50) {
+                int num = r.nextInt(50);
+                if (isPrime(num) && num > 25) {
                     matrix[i][j] = 0;
                 } else {
                     matrix[i][j] = num;
