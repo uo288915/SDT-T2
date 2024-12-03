@@ -24,20 +24,17 @@ public class Main {
         System.out.println("Matrix before sort:");
         printMatrix(matrix);
 
-        int[] flatArray = new int[matrix.length * matrix[0].length];
-        int index = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                flatArray[index++] = matrix[i][j];
-            }
-        }
-
-        Arrays.sort(flatArray);
-
-        index = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = flatArray[index++];
+                for (int k = 0; k < matrix.length; k++) {
+                    for (int l = 0; l < matrix[k].length; l++) {
+                        if (matrix[i][j] < matrix[k][l]) {
+                            int temp = matrix[i][j];
+                            matrix[i][j] = matrix[k][l];
+                            matrix[k][l] = temp;
+                        }
+                    }
+                }
             }
         }
 
