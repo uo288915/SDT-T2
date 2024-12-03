@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("This is a program that generates a random sorted matrix\n");
+
         int[][] matrix = new int[40][40];
         Random r = new Random();
 
