@@ -1,11 +1,11 @@
 package src;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         int[][] matrix = new int[40][40];
-
         Random r = new Random();
 
         for (int i = 0; i < matrix.length; i++) {
@@ -19,12 +19,28 @@ public class Main {
             }
         }
 
+        System.out.println("Matrix before sort:");
+        printMatrix(matrix);
+
+        int[] flatArray = new int[matrix.length * matrix[0].length];
+        int index = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
+                flatArray[index++] = matrix[i][j];
             }
-            System.out.println();
         }
+
+        Arrays.sort(flatArray);
+
+        index = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = flatArray[index++];
+            }
+        }
+
+        System.out.println("\nMatrix after sort:");
+        printMatrix(matrix);
     }
 
     public static boolean isPrime(int num) {
@@ -38,4 +54,14 @@ public class Main {
         }
         return true;
     }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }
+
