@@ -23,8 +23,8 @@ public class Main {
     public static void initializeMatrix(int[][] matrix, Random randomGenerator) {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix[row].length; col++) {
-                int num = randomGenerator.nextInt(100) + 1; // Números entre 1 y 100
-                matrix[row][col] = (isPrime(num) && num > 50) ? 0 : num; // Modifiqué la condición
+                int num = randomGenerator.nextInt(200) + 1;
+                matrix[row][col] = (isPrime(num) && num > 75) ? -1 : num;
             }
         }
     }
