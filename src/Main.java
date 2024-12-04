@@ -1,45 +1,61 @@
 package src;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("This is a program for the SDT subject\n");
+        System.out.println("Welcome to the Advanced SDT Program\n");
 
-        int[][] matrix = new int[30][30];
-        Random r = new Random();
+        int[][] matrix = new int[40][40];
+        Random randomGenerator = new Random();
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                int num = r.nextInt(50);
-                if (isPrime(num) && num > 20) {
-                    matrix[i][j] = 0;
-                } else {
-                    matrix[i][j] = num;
-                }
-            }
-        }
+        initializeMatrix(matrix, randomGenerator);
 
-        System.out.println("Matrix before sort:");
+        System.out.println("Initial Matrix:");
         printMatrix(matrix);
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                for (int k = 0; k < matrix.length; k++) {
-                    for (int l = 0; l < matrix[k].length; l++) {
-                        if (matrix[i][j] < matrix[k][l]) {
-                            int temp = matrix[i][j];
-                            matrix[i][j] = matrix[k][l];
-                            matrix[k][l] = temp;
-                        }
-                    }
-                }
+        selectionSortMatrix(matrix);
+
+        System.out.println("\nSorted Matrix:");
+        printMatrix(matrix);
+    }
+
+    public static void initializeMatrix(int[][] matrix, Random randomGenerator) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                int num = randomGenerator.nextInt(100) + 1; // Números entre 1 y 100
+                matrix[row][col] = (isPrime(num) && num > 50) ? 0 : num; // Modifiqué la condición
             }
         }
+    }
 
-        System.out.println("\nMatrix after sort:");
-        printMatrix(matrix);
+    public static void selectionSortMatrix(int[][] matrix) {
+        int totalElements = matrix.length * matrix[0].length;
+
+        for (int i = 0; i < totalElements - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < totalElements; j++) {
+                if (getElement(matrix, j) < getElement(matrix, minIndex)) {
+                    minIndex = j;
+                }
+            }
+            swapElements(matrix, i, minIndex);
+        }
+    }
+
+    public static int getElement(int[][] matrix, int index) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        return matrix[index / cols][index % cols];
+    }
+
+    public static void swapElements(int[][] matrix, int index1, int index2) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        int temp = matrix[index1 / cols][index1 % cols];
+        matrix[index1 / cols][index1 % cols] = matrix[index2 / cols][index2 % cols];
+        matrix[index2 / cols][index2 % cols] = temp;
     }
 
     public static boolean isPrime(int num) {
@@ -55,9 +71,9 @@ public class Main {
     }
 
     public static void printMatrix(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
+        for (int[] row : matrix) {
+            for (int num : row) {
+                System.out.print(num + " ");
             }
             System.out.println();
         }
