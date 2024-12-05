@@ -1,8 +1,8 @@
 # REPORT - GIT
 
-![](SDT/image002.png)
+![](SDT/image002.jpg)
 
-**Name:** Martín Felgueres Díaz
+**Name:** Martín Felgueres Díaz  
 **Subject:** Software Development Tools  
 **Date:** 5 of december of 2024
 
