@@ -1,11 +1,12 @@
 # REPORT - GIT
 
+![](SDT/image002.png)
+
 **Name:** Martín Felgueres Díaz
 **Subject:** Software Development Tools  
 **Date:** 5 of december of 2024
 
 ---
-
 
 ## Crear un repositorio remoto (en GitHub, ...)
 
